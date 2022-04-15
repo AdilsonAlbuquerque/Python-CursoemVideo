@@ -3,7 +3,7 @@ palavras = ('aprender', 'programar', 'linguagem', 'python',
             'trabalhar', 'mercado', 'programador', 'futuro')
 
 for c in palavras:
-    print(f'Na palavra {c.upper()} temos', end=' ')
+    print(f'\nNa palavra {c.upper()} temos', end=' ')
     for vogal in c:
         if vogal in 'aeiou':
             print(vogal, end=' ')
