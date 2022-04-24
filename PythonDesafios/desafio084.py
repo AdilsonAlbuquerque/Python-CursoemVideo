@@ -1,12 +1,16 @@
-lista = list()
-dado = list()
-pesado = list()
-leve = list()
-maior = list()
-menor = list()
+lista = []
+dado = []
+maior = menor = 0
 while True:
     dado.append(str(input('Nome: ')))
     dado.append(int(input('Peso: ')))
+    if len(lista) == 0:
+        maior = menor = dado[1]
+    else:
+        if dado[1] > maior:
+            maior = dado[1]
+        if dado[1] < menor:
+            menor = dado[1]
     lista.append(dado[:])
     dado.clear()
     resp = ' '
@@ -14,14 +18,16 @@ while True:
         resp = str(input('Quer continuar? [S/N] ')).strip().upper()
     if resp in 'N':
         break
-for p in lista:
-    if p[1] >= 100:
-        pesado.append(p[0])
-        maior.append(p[1])
-    elif p[1] <= 70:
-        leve.append(p[0])
-        menor.append(p[1])
 print('-=' * 25)
+print(lista)
 print(f'Foram cadastradas {len(lista)} pessoas')
-print(f'Os maiores pesos foram de {maior}Kg. Peso de {pesado}')
-print(f'Os menores pesos foram de {menor}Kg. Peso de {leve}')
+print(f'O maior peso foi de {maior}Kg. Peso de ', end='')
+for p in lista:
+    if p[1] == maior:
+        print(f'[{p[0]}] ', end='')
+print()
+print(f'O menor peso foi de {menor}Kg. Peso de ', end='')
+for p in lista:
+    if p[1] == menor:
+        print(f'[{p[0]}] ', end='')
+print()
